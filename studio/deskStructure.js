@@ -1,7 +1,16 @@
 import S from '@sanity/desk-tool/structure-builder'
-import { GrEdit, GrView } from 'react-icons/gr'
+import { GrEdit, GrView, GrWorkshop, GrContact, GrCatalog } from 'react-icons/gr'
+import { ImNewspaper } from 'react-icons/im'
 import * as React from 'react'
-import { FaSitemap, FaHome } from 'react-icons/fa'
+import { IoIosPeople } from 'react-icons/io'
+import { AiOutlineForm, AiFillLock } from 'react-icons/ai'
+import { FaSitemap, FaHome, FaWindowRestore } from 'react-icons/fa'
+import { MdWork } from 'react-icons/md'
+import { BsQuestionOctagon, BsWindow } from 'react-icons/bs'
+import { CgWebsite } from 'react-icons/cg'
+import { GrLaunch, GrMapLocation } from 'react-icons/gr'
+import { VscMultipleWindows, VscLaw } from 'react-icons/vsc'
+import { BiWindowAlt } from 'react-icons/bi'
 
 function SitePreview({ document, options }) {
     if (!process.env.SANITY_STUDIO_PREVIEW_URL) {
@@ -19,6 +28,26 @@ function SitePreview({ document, options }) {
     )
 }
 
+const pageEditViews = (page) => [
+    S.view.form().icon(GrEdit),
+    S.view.component(SitePreview).icon(GrView).options({ page }).title('Preview'),
+]
+
+const singleItem = ({ schemaType, id, title, icon }) =>
+    S.listItem({ schemaType, title, id, icon }).child(
+        S.editor().id(id).title(title).schemaType(schemaType),
+    )
+
+const pageItem = ({ schemaType, id, title, icon, slug }) =>
+    S.documentListItem({ schemaType, id, title, icon }).child(
+        S.editor()
+            .schemaType(schemaType)
+            .views([
+                S.view.form().icon(GrEdit),
+                S.view.component(SitePreview).icon(GrView).options({ slug }).title('Preview'),
+            ]),
+    )
+
 export default () =>
     S.list()
         .title('Content')
@@ -30,23 +59,29 @@ export default () =>
                 .title('Site')
                 .icon(FaSitemap)
                 .child(S.editor().schemaType('site')),
-            S.documentListItem()
-                .schemaType('landingPage')
-                .id('landingPage')
-                .title('Landing Page')
-                .icon(FaHome)
+            //   S.documentTypeListItem('partners').title('Partners'),
+            //   S.documentTypeListItem('peoples').title('People'),
+            //   S.documentTypeListItem('positions').title('Opening Positions'),
+
+            S.divider(),
+
+            S.listItem()
+                .title('Pages')
+                .icon(CgWebsite)
                 .child(
-                    S.editor()
-                        .schemaType('landingPage')
-                        .views([
-                            S.view.form().icon(GrEdit),
-                            S.view
-                                .component(SitePreview)
-                                .icon(GrView)
-                                .options({ slug: '' })
-                                .title('Preview'),
+                    S.list()
+                        .title('Pages')
+                        .items([
+                            pageItem({
+                                schemaType: 'landingPage',
+                                id: 'landingPage',
+                                title: 'Landing',
+                                icon: FaHome,
+                                slug: '',
+                            }),
                         ]),
                 ),
+
             S.divider(),
             ...S.documentTypeListItems().filter(
                 (item) => !['site', 'landingPage'].includes(item.getId()),
