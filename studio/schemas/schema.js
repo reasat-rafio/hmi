@@ -13,8 +13,10 @@ import option from './objects/treatment/option'
 import additionalInfo from './objects/treatment/info'
 import accreditationsAndAwards from './objects/award/accreditation-award'
 import otherAccreditationsAwards from './objects/award/other-accreditations-awards'
+import admission from './objects/admission/admission'
 
-import ctaButton from './objects/ctaButton'
+import ctaButton from './objects/common/ctaButton'
+import point from './objects/common/point'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -32,7 +34,9 @@ export default createSchema({
         additionalInfo,
         accreditationsAndAwards,
         otherAccreditationsAwards,
+        admission,
 
         ctaButton,
+        point,
     ]),
 })

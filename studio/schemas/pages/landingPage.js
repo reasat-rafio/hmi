@@ -12,7 +12,12 @@ export default {
             name: 'screens',
             title: 'Screens',
             type: 'array',
-            of: [{ type: 'hero' }, { type: 'treatment' }, { type: 'accreditationsAndAwards' }],
+            of: [
+                { type: 'hero' },
+                { type: 'treatment' },
+                { type: 'accreditationsAndAwards' },
+                { type: 'admission' },
+            ],
         },
     ],
     preview: {

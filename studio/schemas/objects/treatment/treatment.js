@@ -26,26 +26,7 @@ export default {
             name: 'points',
             title: 'Points',
             type: 'array',
-            of: [
-                {
-                    name: 'ponit',
-                    title: 'Point',
-                    type: 'object',
-                    icon: AiOutlineMedicineBox,
-                    fields: [
-                        {
-                            name: 'name',
-                            title: 'Name',
-                            type: 'string',
-                        },
-                        {
-                            name: 'cta',
-                            title: 'CTA',
-                            type: 'ctaButton',
-                        },
-                    ],
-                },
-            ],
+            of: [{ type: 'point' }],
         },
 
         {

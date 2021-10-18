@@ -39,7 +39,7 @@ export default {
     ],
     preview: {
         select: {
-            title: 'icon',
+            title: 'title',
             subtitle: 'description',
         },
     },
