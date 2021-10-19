@@ -18,7 +18,7 @@ export const Options: React.FC<OptionsProps> = ({
                 </button>
             </div>
 
-            <div className="text-xs text-white text-right">
+            <div className="text-xs text-white text-right hidden lg:block ">
                 <p>{featuredName}</p>
                 <p>{role}</p>
             </div>

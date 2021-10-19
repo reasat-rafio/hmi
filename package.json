@@ -19,6 +19,7 @@
         "next-seo": "^4.24.0",
         "react": "17.0.2",
         "react-dom": "17.0.2",
+        "react-icons": "^4.3.1",
         "react-json-pretty": "^2.2.0",
         "sanity-react-extra": "^0.2.4"
     },

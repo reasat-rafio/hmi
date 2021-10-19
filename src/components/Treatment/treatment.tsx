@@ -8,6 +8,8 @@ import Image from 'next/image'
 import clsx from 'clsx'
 import { AnimateSharedLayout, motion } from 'framer-motion'
 import { Options } from './Options'
+import { useWindowSize } from 'src/libs/hooks'
+import { SmFilterDropDown } from './OptionDropdown'
 
 interface TreatmentProps {
     type: string
@@ -27,17 +29,19 @@ export const Treatment: React.FC<TreatmentProps> = ({
     options,
     points,
 }) => {
-    const [selectedOption, setselectedOption] = useState(options[0])
+    const [selectedOption, setSelectedOption] = useState(options[0])
     const [selectedIndex, setSelectedIndex] = useState<number>(0)
+
+    const windowWidth = useWindowSize()?.width ?? 0
 
     return (
         <section className="relative container xl:ml-auto xl:mr-0 ml-auto mr-auto xl:px-0  px-3  box-border">
             <div className="relative xl:pl-10 xl:pr-0 pl-5 pr-5 z-20">
                 <h2 className="text-center font-light capitalize text-sm">{title}</h2>
-                <h4 className="text-center text-[32px]">{tagline}</h4>
+                <h4 className="text-center text-[32px] my-3">{tagline}</h4>
                 <div className="w-full grid grid-cols-12 xl:gap-10">
                     <div className="xl:col-span-3 col-span-12 flex flex-col justify-end ">
-                        <p className="font-normal text-lg">
+                        <p className="font-normal lg:text-lg text-base">
                             <PortableText blocks={description} />
                         </p>
 
@@ -48,74 +52,90 @@ export const Treatment: React.FC<TreatmentProps> = ({
                         </div>
                     </div>
                     <div className="xl:col-span-9 col-span-12">
-                        <div className="grid grid-cols-12 relative items-end justify-center">
+                        <div className="grid grid-cols-12 relative lg:items-end lg:justify-center items-center justify-center">
                             <div
                                 className="absolute top-0 left-0 w-full h-[110%] transform translate-y-[-9%] bg-[#003218] z-10"
-                                style={{ clipPath: `polygon(0 35%, 100% 0, 100% 100%, 0% 100%)` }}
+                                style={{
+                                    clipPath:
+                                        windowWidth > 1024
+                                            ? `polygon(0 35%, 100% 8%, 100% 100%, 0% 100%)`
+                                            : `polygon(0 10%, 100% 0, 100% 100%, 0% 100%)`,
+                                }}
                             />
 
                             <div className=" lg:col-span-5 col-span-12 flex flex-col relative z-20 mx-10 h-[60%] ">
-                                <AnimateSharedLayout>
-                                    <ol className="flex justify-between w-full">
-                                        {options.map((option, idx) => (
-                                            <motion.li
-                                                className={clsx(
-                                                    'text-sm relative cursor-pointer text-center transition-all duration-150 flex justify-center items-center',
-                                                    idx === selectedIndex
-                                                        ? 'text-[#CAB391] font-bold'
-                                                        : 'text-[#75C690]',
-                                                )}
-                                                key={option._key}
-                                                animate
-                                                onClick={() => {
-                                                    setselectedOption(option)
-                                                    setSelectedIndex(idx)
-                                                }}
-                                            >
-                                                {idx === selectedIndex && (
-                                                    <motion.div
-                                                        className="w-full h-1 absolute -bottom-4 bg-[#CAB391]"
-                                                        layoutId="underline"
-                                                        initial={false}
-                                                        transition={{ duration: 0.3 }}
-                                                    ></motion.div>
-                                                )}
+                                <div className="xl:block hidden">
+                                    <AnimateSharedLayout>
+                                        <ol className="flex justify-between w-full">
+                                            {options.map((option, idx) => (
+                                                <motion.li
+                                                    className={clsx(
+                                                        'text-sm relative cursor-pointer text-center transition-all duration-150 flex justify-center items-center',
+                                                        idx === selectedIndex
+                                                            ? 'text-[#CAB391] font-bold'
+                                                            : 'text-[#75C690]',
+                                                    )}
+                                                    key={option._key}
+                                                    animate
+                                                    onClick={() => {
+                                                        setSelectedOption(option)
+                                                        setSelectedIndex(idx)
+                                                    }}
+                                                >
+                                                    {idx === selectedIndex && (
+                                                        <motion.div
+                                                            className="w-full h-1 absolute -bottom-4 bg-[#CAB391]"
+                                                            layoutId="underline"
+                                                            initial={false}
+                                                            transition={{ duration: 0.3 }}
+                                                        ></motion.div>
+                                                    )}
 
-                                                <SanityImg
-                                                    className="mx-2 "
-                                                    builder={imageUrlBuilder}
-                                                    image={option.icon}
-                                                    width={15}
-                                                    alt={option.entryName}
-                                                />
-                                                {option.entryName}
-                                            </motion.li>
-                                        ))}
-                                    </ol>
-                                    <Options selectedOption={selectedOption} />
-                                </AnimateSharedLayout>
+                                                    <SanityImg
+                                                        className="mx-2 "
+                                                        builder={imageUrlBuilder}
+                                                        image={option.icon}
+                                                        width={15}
+                                                        alt={option.entryName}
+                                                    />
+                                                    {option.entryName}
+                                                </motion.li>
+                                            ))}
+                                        </ol>
+                                    </AnimateSharedLayout>
+                                </div>
+                                <SmFilterDropDown
+                                    selected={selectedOption.entryName}
+                                    icon={selectedOption.icon}
+                                    setSelectedOption={setSelectedOption}
+                                    options={options}
+                                />
+                                <Options selectedOption={selectedOption} />
                             </div>
-                            <div className="lg:col-span-7 col-span-12 z-20 ">
+                            <div className="lg:col-span-7 col-span-12 z-20 mt-12 lg:mt-0 flex items-end mx-10 ">
+                                <div className="text-xs text-white text-right block lg:hidden  ml-auto w-full pb-5">
+                                    <p>{selectedOption.featuredName}</p>
+                                    <p>{selectedOption.role}</p>
+                                </div>
                                 <SanityImg
-                                    className=" rounded-[8px] "
+                                    className="rounded-[8px] "
                                     builder={imageUrlBuilder}
                                     image={selectedOption.image}
-                                    height={600}
+                                    height={windowWidth > 1024 ? 600 : 250}
                                     alt="Hero Image"
                                 />
                             </div>
                         </div>
-                        <div className="flex mt-4">
+                        <div className="flex mt-4 justify-center items-center">
                             <div className="p-2 box-border bg-[#E9FBF2] rounded-full mr-4">
                                 <SanityImg
-                                    className=""
                                     builder={imageUrlBuilder}
                                     image={additionalInfo.icon}
                                     width={30}
                                     alt="Virus"
                                 />
                             </div>
-                            <p className="flex-1 text-[#373E46]">
+                            <p className="flex-1 text-[#373E46] text-xs lg:text-sm">
                                 <PortableText
                                     blocks={additionalInfo.description}
                                     serializers={{

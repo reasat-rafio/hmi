@@ -8,7 +8,7 @@ const Link: React.FC<NextLinkProps & { className?: string }> = ({ href, children
         <NextLink href={href}>
             <a
                 className={clsx(
-                    'flex text-copper items-center font-semibold transition-colors duration-150 text-sm group ',
+                    'flex text-copper items-center font-semibold transition-colors duration-150 text-sm group',
                 )}
                 {...props}
             >
