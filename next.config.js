@@ -7,5 +7,8 @@ const STUDIO_REWRITE = {
 }
 
 module.exports = {
+    future: {
+        webpack5: false,
+    },
     rewrites: () => [STUDIO_REWRITE],
 }

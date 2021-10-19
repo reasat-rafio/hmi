@@ -1,26 +1,29 @@
 module.exports = {
+    purge: ['./src/**/*.{js,ts,jsx,tsx}'],
     mode: 'jit',
-    purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
     darkMode: false, // or 'media' or 'class'
     theme: {
-        container: {
-            center: true,
-            padding: '1.5rem',
-            screens: {
-                sm: '640px',
-                md: '768px',
-                lg: '1024px',
-                xl: '1280px',
-                '2xl': '1536px',
-            },
-        },
-
         extend: {
+            container: {
+                // center: true,
+                padding: '0rem',
+                // screens: {
+                //     sm: '640px',
+                //     md: '768px',
+                //     lg: '1024px',
+                //     xl: '1280px',
+                //     '2xl': '1536px',
+                // },
+            },
+
             colors: {
                 warning: '#F3CD68',
                 biscay: '#1E4372',
                 copper: '#A78148',
                 green: '#00863F',
+                gray: '#FBF9F6',
+                ebony: '#212932',
+                'bright-gray': '#373E46',
             },
             fontSize: {
                 '10px': '.625rem',
@@ -85,6 +88,9 @@ module.exports = {
                 inter: ["'Inter', sans-serif"],
             },
         },
+    },
+    variants: {
+        extend: {},
     },
     plugins: [],
 }
