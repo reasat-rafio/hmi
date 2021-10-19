@@ -25,6 +25,10 @@ module.exports = {
                 ebony: '#212932',
                 'bright-gray': '#373E46',
             },
+
+            boxShadow: {
+                point: '0px 8px 32px rgba(0, 0, 0, 0.1)',
+            },
             fontSize: {
                 '10px': '.625rem',
                 '22px': '1.375rem',

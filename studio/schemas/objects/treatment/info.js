@@ -1,4 +1,6 @@
 import { AiOutlineInfoCircle } from 'react-icons/ai'
+import React from 'react'
+import { MdHighlight } from 'react-icons/md'
 
 export default {
     name: 'additionalInfo',
@@ -12,7 +14,25 @@ export default {
             name: 'description',
             title: 'Description',
             type: 'array',
-            of: [{ type: 'block' }],
+            of: [
+                {
+                    type: 'block',
+                    marks: {
+                        decorators: [
+                            {
+                                title: 'Pop',
+                                value: 'pop',
+                                blockEditor: {
+                                    icon: () => <MdHighlight />,
+                                    render: ({ children }) => (
+                                        <span style={{ color: '#A78148' }}>{children}</span>
+                                    ),
+                                },
+                            },
+                        ],
+                    },
+                },
+            ],
         },
     ],
     preview: {

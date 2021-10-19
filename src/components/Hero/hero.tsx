@@ -14,7 +14,7 @@ interface HeroProps {
 
 export const Hero: React.FC<HeroProps> = ({ title, image, tagline, description, button }) => {
     return (
-        <div className="w-full relative container xl:ml-auto xl:mr-0 ml-auto mr-auto xl:px-0 px-3">
+        <section className="relative container xl:ml-auto xl:mr-0 ml-auto mr-auto xl:px-0 px-3">
             <div
                 className=" absolute left-0 top-0 h-full xl:w-1/2 w-full !bg-gray z-10"
                 style={{ clipPath: ` polygon(0 1%, 100% 0, 100% 81%, 0% 100%)` }}
@@ -30,7 +30,7 @@ export const Hero: React.FC<HeroProps> = ({ title, image, tagline, description, 
                     </h4>
                 </div>
                 <div className="xl:col-span-9 col-span-12">
-                    <div className=" ">
+                    <div>
                         <SanityImg
                             className="w-full h-full rounded-[8px]"
                             builder={imageUrlBuilder}
@@ -48,6 +48,6 @@ export const Hero: React.FC<HeroProps> = ({ title, image, tagline, description, 
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     )
 }
