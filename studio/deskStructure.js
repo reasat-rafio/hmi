@@ -1,16 +1,8 @@
 import S from '@sanity/desk-tool/structure-builder'
-import { GrEdit, GrView, GrWorkshop, GrContact, GrCatalog } from 'react-icons/gr'
-import { ImNewspaper } from 'react-icons/im'
+import { GrEdit, GrView, GrNotification, GrContact, GrCatalog } from 'react-icons/gr'
 import * as React from 'react'
-import { IoIosPeople } from 'react-icons/io'
-import { AiOutlineForm, AiFillLock } from 'react-icons/ai'
 import { FaSitemap, FaHome, FaWindowRestore } from 'react-icons/fa'
-import { MdWork } from 'react-icons/md'
-import { BsQuestionOctagon, BsWindow } from 'react-icons/bs'
 import { CgWebsite } from 'react-icons/cg'
-import { GrLaunch, GrMapLocation } from 'react-icons/gr'
-import { VscMultipleWindows, VscLaw } from 'react-icons/vsc'
-import { BiWindowAlt } from 'react-icons/bi'
 
 function SitePreview({ document, options }) {
     if (!process.env.SANITY_STUDIO_PREVIEW_URL) {
@@ -63,8 +55,22 @@ export default () =>
             //   S.documentTypeListItem('peoples').title('People'),
             //   S.documentTypeListItem('positions').title('Opening Positions'),
 
-            S.divider(),
+            S.listItem()
+                .title('Notifications')
+                .icon(GrNotification)
+                .child(
+                    S.list()
+                        .title('Notifications')
+                        .items([
+                            pageItem({
+                                schemaType: 'notification',
+                                id: 'notification',
+                                icon: GrNotification,
+                            }),
+                        ]),
+                ),
 
+            S.divider(),
             S.listItem()
                 .title('Pages')
                 .icon(CgWebsite)

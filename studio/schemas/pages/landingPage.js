@@ -8,6 +8,7 @@ export default {
             title: 'SEO',
             type: 'seo',
         },
+
         {
             name: 'screens',
             title: 'Screens',

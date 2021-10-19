@@ -14,6 +14,7 @@ import additionalInfo from './objects/treatment/info'
 import accreditationsAndAwards from './objects/award/accreditation-award'
 import otherAccreditationsAwards from './objects/award/other-accreditations-awards'
 import admission from './objects/admission/admission'
+import notification from './objects/notificationbar'
 
 import ctaButton from './objects/common/ctaButton'
 import point from './objects/common/point'
@@ -35,6 +36,7 @@ export default createSchema({
         accreditationsAndAwards,
         otherAccreditationsAwards,
         admission,
+        notification,
 
         ctaButton,
         point,
