@@ -42,7 +42,7 @@ export const SmFilterDropDown: React.FC<SmFilterDropDownProps> = ({
     const [showDropDown, setShowDropDown] = useState(false)
 
     return (
-        <div className="flex justify-center items-center lg:hidden ">
+        <div className="flex justify-center items-center xl:hidden ">
             <div className="relative text-xs flex-1 ">
                 <button
                     type="button"

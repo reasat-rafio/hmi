@@ -24,7 +24,7 @@ export const Awards: React.FC<AwardsProps> = ({
 
     return (
         <section className="max-w-7xl mx-auto grid grid-cols-12 my-20 px-5">
-            <div className="xl:col-span-8 col-span-12 grid grid-cols-12">
+            <div className="xl:col-span-8 col-span-12 grid grid-cols-12 gap-5">
                 <div className="xl:col-span-8 col-span-12">
                     <h4 className="font-bold text-lg">{title}</h4>
                     <p className="font-normal lg:text-lg text-base my-3">
@@ -32,7 +32,7 @@ export const Awards: React.FC<AwardsProps> = ({
                     </p>
                     <Link href={cta.href}>{cta.title}</Link>
                 </div>
-                <div className="xl:col-span-4 col-span-12">
+                <div className="xl:col-span-4 col-span-12 my-4">
                     <a href={highlightedAward.icourln}>
                         <SanityImg
                             title={highlightedAward.name}
@@ -43,6 +43,7 @@ export const Awards: React.FC<AwardsProps> = ({
                             alt={highlightedAward.name}
                         />
                     </a>
+                    <p className="text-center">{highlightedAward.name}</p>
                 </div>
             </div>
             <div className="xl:col-span-4 col-span-12">
