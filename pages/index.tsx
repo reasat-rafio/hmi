@@ -29,6 +29,9 @@ export default function Home(props: SanityProps) {
                 <SanityImg builder={imageUrlBuilder} image={site.logo} height={200} />
                 <h1 className="text-blue-900 text-4xl my-8">{landingPage.heading}</h1>
                 <p className="text-gray-500">{landingPage.description}</p>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Porro necessitatibus
+                molestiae cum veniam quod illo nulla odio atque iusto placeat beatae maxime, ab
+                delectus ipsum voluptatem laboriosam impedit ea rerum!
             </div>
         </div>
     )

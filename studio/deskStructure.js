@@ -51,9 +51,6 @@ export default () =>
                 .title('Site')
                 .icon(FaSitemap)
                 .child(S.editor().schemaType('site')),
-            //   S.documentTypeListItem('partners').title('Partners'),
-            //   S.documentTypeListItem('peoples').title('People'),
-            //   S.documentTypeListItem('positions').title('Opening Positions'),
 
             S.listItem()
                 .title('Notifications')

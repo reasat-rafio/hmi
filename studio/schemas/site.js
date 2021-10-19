@@ -8,11 +8,6 @@ export default {
             title: 'Logo',
             type: 'image',
         },
-        {
-            name: 'notification',
-            title: 'Notification',
-            type: 'notification',
-        },
     ],
     preview: {
         select: {
