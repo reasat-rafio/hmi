@@ -2,7 +2,7 @@ import Link from '@components/ui/Link'
 import { imageUrlBuilder, PortableText } from '@utils/sanity'
 import React from 'react'
 import { SanityImg } from 'sanity-react-extra'
-import { useWindowSize } from 'src/libs/hooks'
+// import { useWindowSize } from 'src/libs/hooks'
 
 interface AwardsProps {
     type: string
@@ -20,7 +20,7 @@ export const Awards: React.FC<AwardsProps> = ({
     otherAccreditationsAwards,
     title,
 }) => {
-    const windowWidth = useWindowSize()?.width ?? 0
+    // const windowWidth = useWindowSize()?.width ?? 0
 
     return (
         <section className="max-w-7xl mx-auto grid grid-cols-12 my-20 px-5">

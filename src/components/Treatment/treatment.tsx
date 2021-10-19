@@ -45,7 +45,7 @@ export const Treatment: React.FC<TreatmentProps> = ({
                             <PortableText blocks={description} />
                         </p>
 
-                        <div className="flex flex-col rounded-lg __shadow mt-5">
+                        <div className="flex flex-col rounded-lg __shadow mt-5 overflow-hidden">
                             {points.map((point) => (
                                 <Points key={point._key} {...point} />
                             ))}

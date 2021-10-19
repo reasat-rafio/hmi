@@ -7,6 +7,7 @@ import { sanityStaticProps, useSanityQuery } from '@utils/sanity'
 import { Hero } from '@components/Hero/hero'
 import { Treatment } from '@components/Treatment/treatment'
 import { Awards } from '@components/Awards/awards'
+import { Admisssion } from '@components/Admission/admisssion'
 
 const query = groq`{
   "site": *[_id == "site"][0] {
@@ -61,6 +62,7 @@ export default function Home(props: SanityProps) {
                 hero: Hero,
                 treatment: Treatment,
                 accreditationsAndAwards: Awards,
+                admission: Admisssion,
             })}
         </div>
     )

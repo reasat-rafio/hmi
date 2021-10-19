@@ -16,7 +16,7 @@ export const Hero: React.FC<HeroProps> = ({ title, image, tagline, description, 
     return (
         <section className="relative container xl:ml-auto xl:mr-0 ml-auto mr-auto xl:px-0 px-3">
             <div
-                className=" absolute left-0 top-0 h-full xl:w-1/2 w-full !bg-gray z-10"
+                className="absolute left-0 top-0 h-full xl:w-1/2 w-full !bg-gray z-10"
                 style={{ clipPath: ` polygon(0 1%, 100% 0, 100% 81%, 0% 100%)` }}
             />
 
