@@ -44,3 +44,22 @@ interface Point {
     cta: Button
     name: string
 }
+
+interface HighlightedAward {
+    icourln: string
+    image: Image
+    name: string
+}
+
+interface OtherAccreditationsAwards {
+    _type: string
+    accreditationsAwards: AccreditationsAward[]
+    title: string
+}
+
+interface AccreditationsAward {
+    _key: string
+    icon: Image
+    icourln: string
+    name: string
+}

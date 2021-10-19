@@ -6,6 +6,7 @@ import { SanityProps } from 'next-sanity-extra'
 import { sanityStaticProps, useSanityQuery } from '@utils/sanity'
 import { Hero } from '@components/Hero/hero'
 import { Treatment } from '@components/Treatment/treatment'
+import { Awards } from '@components/Awards/awards'
 
 const query = groq`{
   "site": *[_id == "site"][0] {
@@ -59,6 +60,7 @@ export default function Home(props: SanityProps) {
             {renderObjectArray(landingPage.screens, {
                 hero: Hero,
                 treatment: Treatment,
+                accreditationsAndAwards: Awards,
             })}
         </div>
     )
