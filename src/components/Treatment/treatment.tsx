@@ -40,9 +40,9 @@ export const Treatment: React.FC<TreatmentProps> = ({
                 <div className="relative xl:pl-10 xl:pr-0  z-20">
                     <h2 className="text-center font-light capitalize text-sm px-5 ">{title}</h2>
                     <h4 className="text-center text-[32px] my-3 px-5">{tagline}</h4>
-                    <div className="w-full grid grid-cols-12 xl:gap-10">
+                    <div className="w-full grid grid-cols-12 xl:gap-5">
                         <div className="xl:col-span-3 col-span-12 flex flex-col justify-end ">
-                            <p className="font-normal lg:text-lg text-base px-5 lg:px-0">
+                            <p className="font-normal lg:text-lg text-base px-5 lg:px-0 text-[#373E46]">
                                 <PortableText blocks={description} />
                             </p>
 

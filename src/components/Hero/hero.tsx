@@ -25,7 +25,7 @@ export const Hero: React.FC<HeroProps> = ({ title, image, tagline, description, 
                     className="absolute left-0 top-0 h-full w-1/2 !bg-gray z-10 hidden xl:block"
                     style={{ clipPath: ` polygon(0 1%, 100% 0, 100% 81%, 0% 100%)` }}
                 />
-                <div className="relative xl:pl-10 xl:pr-0 pl-5 pr-5 grid grid-cols-12 xl:gap-10 z-20 ">
+                <div className="relative xl:pl-10 xl:pr-0 pl-5 pr-5 grid grid-cols-12 xl:gap-5 z-20 ">
                     <div className="xl:col-span-3 col-span-12 h-full my-auto flex flex-col justify-center items-center font-light">
                         <h1 className="text-2xl text-center xl:text-left xl:text-[40px] leading-relaxed text-ebony ">
                             {title}

@@ -99,7 +99,7 @@ export function Navbar({ site }: { site: Site }) {
                     </a>
                 </div>
 
-                <div className="h-full flex flex-col justify-center items-center  my-auto">
+                <div className="h-full flex flex-col justify-center my-auto pl-5">
                     <div className="flex ">
                         {site.primaryMenu.map((menu, index) => {
                             return (
@@ -113,7 +113,7 @@ export function Navbar({ site }: { site: Site }) {
                             )
                         })}
                     </div>
-                    <div className={clsx(scroll ? 'hidden ' : 'flex mt-3  my-auto items-center ')}>
+                    <div className={clsx(scroll ? 'hidden ' : 'flex mt-3  my-auto ')}>
                         {site.secondaryMenu.map((menu, index) => {
                             return (
                                 <ListMenu
