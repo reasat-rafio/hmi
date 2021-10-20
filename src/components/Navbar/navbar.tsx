@@ -4,13 +4,12 @@ import React, { useState } from 'react'
 import clsx from 'clsx'
 // import { useWindowScroll } from '../lib/hooks'
 import { useRouter } from 'next/router'
-import Link from 'next/link'
 import { useWindowScroll } from 'src/libs/hooks'
 import { imageUrlBuilder } from '@utils/sanity'
 
-export function Navbar({ logo, menu }: { logo: SanityImage }) {
+export function Navbar({ logo }: { logo: SanityImage }) {
     const [navbarOpen, setNavbarOpen] = useState(false)
-    const [isActive, setIsActive] = useState(false)
+    // const [isActive, setIsActive] = useState(false)
     const scroll = useWindowScroll()?.y ?? 0
     const router = useRouter()
     return (

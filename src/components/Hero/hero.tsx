@@ -14,7 +14,7 @@ interface HeroProps {
 
 export const Hero: React.FC<HeroProps> = ({ title, image, tagline, description, button }) => {
     return (
-        <section className="w-full relative h-full mt-14 sm:mt-16 ">
+        <section className="w-full relative h-full pt-16 sm:pt-20 ">
             <div
                 className="absolute left-0 top-0 h-full w-full !bg-gray z-10 block xl:hidden"
                 style={{ clipPath: ` polygon(0 0, 100% 0, 100% 93%, 0 99%` }}
