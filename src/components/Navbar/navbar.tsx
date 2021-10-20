@@ -175,7 +175,10 @@ export function Navbar({ site }: { site: Site }) {
                         </div>
 
                         <div className="flex space-x-5 ">
-                            <Searchbar />
+                            <div className="">
+                                <Searchbar />
+                            </div>
+
                             <button className="px-5 py-3 text-white text-xs font-semibold bg-[#00863F] rounded-[8px]">
                                 Make appointment
                             </button>
