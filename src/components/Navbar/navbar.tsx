@@ -73,7 +73,7 @@ export function Navbar({ site }: { site: Site }) {
     return (
         <div
             className={clsx(
-                'fixed w-full py-4 z-40 top-0 transition-all duration-300 ease-out xl:block hidden  bg-white',
+                'fixed w-full py-4 z-40 top-0 transition-all duration-300 ease-out xl:block hidden  ',
                 scroll ? 'bg-white shadow-md' : 'bg-transparent',
             )}
         >
@@ -135,8 +135,8 @@ export function Navbar({ site }: { site: Site }) {
                                 scroll ? 'hidden' : 'block',
                             )}
                         >
-                            <div className="flex items-center text-xs w-full font-light my-2">
-                                <div className="flex h-5 space-x-2 flex-1">
+                            <div className="flex items-center justify-around text-xs w-full font-light py-2 ">
+                                <div className="flex h-5 space-x-2 items-center justify-center">
                                     <SanityImg
                                         className="h-4 w-4"
                                         builder={imageUrlBuilder}
@@ -149,7 +149,7 @@ export function Navbar({ site }: { site: Site }) {
                                         {site.emergency.number}
                                     </span>
                                 </div>
-                                <div className="flex">
+                                <div className="flex items-center justify-center">
                                     <Image
                                         layout="intrinsic"
                                         height={16}
@@ -159,7 +159,7 @@ export function Navbar({ site }: { site: Site }) {
                                     />
                                     <span className="mx-2">Login</span>
                                 </div>
-                                <div className="flex h-5 space-x-2 flex-1">
+                                <div className="flex h-5 space-x-2 items-center justify-center">
                                     <SanityImg
                                         className="h-4 w-4"
                                         builder={imageUrlBuilder}
