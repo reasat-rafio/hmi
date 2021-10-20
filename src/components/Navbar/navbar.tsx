@@ -73,8 +73,8 @@ export function Navbar({ site }: { site: Site }) {
     return (
         <div
             className={clsx(
-                'fixed w-full py-4 z-40 top-0 transition-all duration-300 ease-out xl:block hidden  ',
-                scroll ? 'bg-white shadow-md' : 'bg-transparent',
+                'fixed w-full py-4 z-40  transition-all duration-300 ease-out xl:block hidden  ',
+                scroll ? 'bg-white shadow-md top-0' : 'bg-transparent top-[40px]',
             )}
         >
             <nav className="container mx-auto px-20 flex justify-between items-start h-full ">
