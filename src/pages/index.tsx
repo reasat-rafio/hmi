@@ -56,6 +56,7 @@ const query = groq`{
 
 export const getStaticProps: GetStaticProps = async (context) => ({
     props: await sanityStaticProps({ query, context }),
+    revalidate: 10,
 })
 
 export default function Home(props: SanityProps) {
