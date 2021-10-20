@@ -51,7 +51,7 @@ export const getStaticProps: GetStaticProps = async (context) => ({
 
 export default function Home(props: SanityProps) {
     const {
-        data: { site, landingPage },
+        data: { landingPage },
     } = useSanityQuery(query, props)
 
     return (
