@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import React, { forwardRef, ButtonHTMLAttributes } from 'react'
 import styles from '@styles/ui/button.module.scss'
-import { motion } from 'framer-motion'
+// import { motion } from 'framer-motion'
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     className?: string
