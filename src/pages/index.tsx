@@ -8,6 +8,8 @@ import { Hero } from '@components/Hero/hero'
 import { Treatment } from '@components/Treatment/treatment'
 import { Awards } from '@components/Awards/awards'
 import { Admisssion } from '@components/Admission/admisssion'
+import SmNavigation from '@components/Navbar/mobile-navigation/mobile-navigation'
+import { useState } from 'react'
 
 const query = groq`{
   "site": *[_id == "site"][0] {
@@ -51,13 +53,19 @@ export const getStaticProps: GetStaticProps = async (context) => ({
 
 export default function Home(props: SanityProps) {
     const {
-        data: { landingPage },
+        data: { site, landingPage },
     } = useSanityQuery(query, props)
+
+    const [navbarActive, setNavbarActive] = useState(false)
 
     return (
         <div>
             <NextSeo title={landingPage.seo.title} description={landingPage.seo.description} />
-
+            <SmNavigation
+                logo={site.logo}
+                setNavbarActive={setNavbarActive}
+                navbarActive={navbarActive}
+            />
             {renderObjectArray(landingPage.screens, {
                 hero: Hero,
                 treatment: Treatment,
