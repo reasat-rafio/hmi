@@ -18,6 +18,7 @@ import notification from './objects/notificationbar'
 
 import ctaButton from './objects/common/ctaButton'
 import point from './objects/common/point'
+import menuItem from './objects/menuItem'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -40,5 +41,6 @@ export default createSchema({
 
         ctaButton,
         point,
+        menuItem,
     ]),
 })

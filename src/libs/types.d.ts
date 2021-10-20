@@ -1,3 +1,37 @@
+interface Site {
+    _createdAt: Date
+    _id: string
+    _rev: string
+    _type: string
+    _updatedAt: Date
+    contact: Contact
+    emergency: Emergency
+    logo: any
+    primaryMenu: Menu[]
+    secondaryMenu: Menu[]
+}
+
+interface Menu {
+    _key: string
+    _type: Type
+    href: Href
+    title: string
+    hightlight?: boolean
+    submenu?: Menu[]
+}
+
+interface Contact {
+    icon: Icon
+    mail: string
+    title: string
+}
+
+interface Emergency {
+    icon: Icon
+    number: string
+    title: string
+}
+
 interface Button {
     _type: string
     href: string

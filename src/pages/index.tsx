@@ -62,7 +62,7 @@ export default function Home(props: SanityProps) {
         <div>
             <NextSeo title={landingPage.seo.title} description={landingPage.seo.description} />
             <SmNavigation
-                logo={site.logo}
+                site={site}
                 setNavbarActive={setNavbarActive}
                 navbarActive={navbarActive}
             />

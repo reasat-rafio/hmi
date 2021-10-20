@@ -1,60 +1,22 @@
 import { Dispatch, SetStateAction, useState } from 'react'
 import { IoIosArrowDown } from 'react-icons/io'
-import {
-    IoLogoInstagram,
-    IoLogoTwitter,
-    IoLogoFacebook,
-    IoLogoYoutube,
-    IoClose,
-} from 'react-icons/io5'
+import { IoClose } from 'react-icons/io5'
 import Scrollbar from '@components/ui/Scrollbar'
-import { siteSettings } from './sitesetting'
 import NavLink from '@components/ui/NavLink'
-import { SanityImage, SanityImg } from 'sanity-react-extra'
+import { SanityImg } from 'sanity-react-extra'
 import { imageUrlBuilder } from '@utils/sanity'
 import { Searchbar } from './searchbar'
 import clsx from 'clsx'
-
-const social = [
-    {
-        id: 0,
-        link: 'https://www.facebook.com/redqinc/',
-        icon: <IoLogoFacebook />,
-        className: 'facebook',
-        title: 'text-facebook',
-    },
-    {
-        id: 1,
-        link: 'https://twitter.com/redqinc',
-        icon: <IoLogoTwitter />,
-        className: 'twitter',
-        title: 'text-twitter',
-    },
-    {
-        id: 2,
-        link: 'https://www.youtube.com/channel/UCjld1tyVHRNy_pe3ROLiLhw',
-        icon: <IoLogoYoutube />,
-        className: 'youtube',
-        title: 'text-youtube',
-    },
-    {
-        id: 3,
-        link: 'https://www.instagram.com/redqinc/',
-        icon: <IoLogoInstagram />,
-        className: 'instagram',
-        title: 'text-instagram',
-    },
-]
+import Image from 'next/image'
 
 export default function MobileMenu({
     setNavbarActive,
-    logo,
+    site,
 }: {
     setNavbarActive: Dispatch<SetStateAction<boolean>>
-    logo: SanityImage
+    site: Site
 }) {
     const [activeMenus, setActiveMenus] = useState<any>([])
-    const { site_header } = siteSettings
 
     const handleArrowClick = (menuName: string) => {
         let newActiveMenus = [...activeMenus]
@@ -80,19 +42,19 @@ export default function MobileMenu({
         menuIndex,
         className = '',
     }: any) =>
-        data.label && (
+        data.title && (
             <li className={`mb-0.5 ${className}`}>
                 <div className="flex items-center justify-between">
                     <NavLink
-                        href={data.path}
+                        href={data.href}
                         className={clsx(
                             'w-full relative py-3 transition duration-300 ease-in-out',
                             main ? 'font-bold text-[16px]' : 'text-sm font-normal',
-                            data.color && 'text-[#00863F]',
+                            data.hightlight && 'text-[#00863F]',
                         )}
                     >
                         <span className="block w-full" onClick={() => setNavbarActive(false)}>
-                            {data.label}
+                            {data.title}
                         </span>
                     </NavLink>
                     {hasSubMenu && (
@@ -111,7 +73,7 @@ export default function MobileMenu({
                 {hasSubMenu && (
                     <SubMenu
                         dept={dept}
-                        data={data.subMenu}
+                        data={data.submenu}
                         toggle={activeMenus.includes(menuName)}
                         menuIndex={menuIndex}
                     />
@@ -151,7 +113,7 @@ export default function MobileMenu({
         <>
             <div className="flex flex-col justify-between w-screen h-full px-4 bg-[#FBF9F6]">
                 <div className="w-full flex justify-between items-center relative ps-5 md:ps-7 flex-shrink-0 py-0.5 ">
-                    <SanityImg builder={imageUrlBuilder} image={logo} height={35} alt="Logo" />
+                    <SanityImg builder={imageUrlBuilder} image={site.logo} height={35} alt="Logo" />
 
                     <button
                         className="flex text-2xl items-center justify-center text-gray-500 md:px-5 py-6 lg:py-8 focus:outline-none transition-opacity hover:opacity-60"
@@ -169,7 +131,7 @@ export default function MobileMenu({
                 <Scrollbar className="menu-scrollbar flex-grow mb-auto">
                     <div className="flex flex-col py-7 px-0 lg:px-2 text-heading">
                         <ul className="mobileMenu">
-                            {site_header.primaryMenu.map((menu, index) => {
+                            {site.primaryMenu.map((menu, index) => {
                                 const dept: number = 1
                                 const menuName: string = `sidebar-menu-${dept}-${index}`
 
@@ -178,14 +140,15 @@ export default function MobileMenu({
                                         dept={dept}
                                         data={menu}
                                         main
+                                        hasSubMenu={menu?.submenu}
                                         menuName={menuName}
-                                        key={menuName}
+                                        key={menu._key}
                                         menuIndex={index}
                                     />
                                 )
                             })}
 
-                            {site_header.secondaryMenu.map((menu, index) => {
+                            {site.secondaryMenu.map((menu, index) => {
                                 const dept: number = 1
                                 const menuName: string = `sidebar-menu-${dept}-${index}`
 
@@ -193,7 +156,7 @@ export default function MobileMenu({
                                     <ListMenu
                                         dept={dept}
                                         data={menu}
-                                        hasSubMenu={menu.subMenu}
+                                        hasSubMenu={menu?.submenu}
                                         menuName={menuName}
                                         key={menuName}
                                         menuIndex={index}
@@ -201,39 +164,53 @@ export default function MobileMenu({
                                 )
                             })}
                         </ul>
-
-                        {/* <ul className="mobileMenu">
-                            {site_header.mobileMenu.map((menu, index) => {
-                                const dept: number = 1
-                                const menuName: string = `sidebar-menu-${dept}-${index}`
-
-                                return (
-                                    <ListMenu
-                                        dept={dept}
-                                        data={menu}
-                                        hasSubMenu={menu.subMenu}
-                                        menuName={menuName}
-                                        key={menuName}
-                                        menuIndex={index}
-                                    />
-                                )
-                            })}
-                        </ul> */}
                     </div>
                 </Scrollbar>
 
-                <div className="flex items-center justify-center bg-white border-t border-gray-100 px-7 flex-shrink-0 space-s-1">
-                    {social?.map((item, index) => (
-                        <a
-                            href={item.link}
-                            className={`text-heading p-5 opacity-60 first:-ms-4 transition duration-300 ease-in hover:opacity-100 ${item.className}`}
-                            target="_blank"
-                            key={index}
-                        >
-                            <span className="sr-only">{item.title}</span>
-                            {item.icon}
-                        </a>
-                    ))}
+                <div className="flex border-t border-[#E9EAEA] flex-col">
+                    {site.emergency && (
+                        <div className="flex items-center text-xs w-full font-light my-2">
+                            <div className="flex h-5 space-x-2 flex-1">
+                                <SanityImg
+                                    className="h-4 w-4"
+                                    builder={imageUrlBuilder}
+                                    image={site.emergency.icon}
+                                    height={5}
+                                    alt={site.emergency.title + 'icon'}
+                                />
+                                <span>{site.emergency.title}</span>
+                                <span className="font-bold text-[#00863F]">
+                                    {site.emergency.number}
+                                </span>
+                            </div>
+                            <div className="">
+                                <Image
+                                    layout="intrinsic"
+                                    height={16}
+                                    width={16}
+                                    src="/icons/user.svg"
+                                    alt="user icon"
+                                />
+                                <span className="mx-2">Login</span>
+                            </div>
+                        </div>
+                    )}
+
+                    {site.contact && (
+                        <div className="flex items-center text-xs w-full font-light my-2">
+                            <div className="flex h-5 space-x-2 flex-1">
+                                <SanityImg
+                                    className="h-4 w-4"
+                                    builder={imageUrlBuilder}
+                                    image={site.contact.icon}
+                                    height={5}
+                                    alt={site.contact.title + 'icon'}
+                                />
+                                <a href={`maiolto:${site.contact.mail}`}>{site.contact.title}</a>
+                            </div>
+                            <div></div>
+                        </div>
+                    )}
                 </div>
             </div>
         </>
