@@ -10,6 +10,7 @@ import { Awards } from '@components/Awards/awards'
 import { Admisssion } from '@components/Admission/admisssion'
 import SmNavigation from '@components/Navbar/mobile-navigation/mobile-navigation'
 import { useState } from 'react'
+import { Navbar } from '@components/Navbar/navbar'
 
 const query = groq`{
   "site": *[_id == "site"][0] {
@@ -61,11 +62,13 @@ export default function Home(props: SanityProps) {
     return (
         <div>
             <NextSeo title={landingPage.seo.title} description={landingPage.seo.description} />
+            <Navbar site={site} />
             <SmNavigation
                 site={site}
                 setNavbarActive={setNavbarActive}
                 navbarActive={navbarActive}
             />
+
             {renderObjectArray(landingPage.screens, {
                 hero: Hero,
                 treatment: Treatment,

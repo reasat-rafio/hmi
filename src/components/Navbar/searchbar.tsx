@@ -2,14 +2,17 @@ import React from 'react'
 
 export const Searchbar: React.FC = () => {
     return (
-        <div className="pt-2 relative mx-auto text-gray-600 bg-white border-gray h-10 px-5 pr-16 rounded-lg text-sm flex justify-start item-center border shadow-sm">
+        <div className="pt-2 b relative mx-auto text-gray-600 bg-white  h-10 px-5 pr-16 rounded-lg text-sm flex justify-start item-center border shadow-sm border-[#F4F5F7]">
             <input
                 className="focus:outline-none flex-1"
                 type="text"
                 name="search"
-                placeholder="Search"
+                // placeholder="Search"
             />
-            <button type="submit" className="absolute right-0 mr-4 transform translate-y-1/2 ">
+            <button
+                type="submit"
+                className="absolute right-0 mr-4 top-1/2 transform -translate-y-1/2"
+            >
                 <svg
                     className="text-gray-600 h-4 w-4 fill-current my-auto"
                     xmlns="http://www.w3.org/2000/svg"

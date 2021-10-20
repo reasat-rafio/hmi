@@ -31,7 +31,7 @@ const BottomNavigation: React.FC<{
         <>
             <div
                 className={clsx(
-                    'md:hidden fixed top-0 flex items-center justify-between shadow-bottom Navigation text-gray-700 body-font  w-full h-14 sm:h-16 px-5 z-40 bg-[#FBF9F6] transition-all duration-150',
+                    'xl:hidden fixed top-0 flex items-center justify-between shadow-bottom Navigation text-gray-700 body-font  w-full h-14 sm:h-16 px-5 z-40 bg-[#FBF9F6] transition-all duration-150',
                     scroll && 'shadow-xl',
                 )}
             >

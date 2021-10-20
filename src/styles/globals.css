@@ -9,3 +9,10 @@ body {
 .__shadow {
     box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.07);
 }
+
+.subMenuChild {
+    transition: all 0.3s;
+}
+.subMenu li:hover > .subMenuChild {
+    @apply opacity-100 visible -top-3;
+}
