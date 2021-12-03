@@ -3,7 +3,7 @@ import { MdHighlight } from 'react-icons/md'
 import React from 'react'
 
 export default {
-    name: 'notification',
+    name: 'regency.notification',
     title: 'Notification',
     type: 'object',
     icon: GrNotification,

@@ -5,6 +5,8 @@ import { FaSitemap, FaHome, FaWindowRestore } from 'react-icons/fa'
 import { CgWebsite } from 'react-icons/cg'
 import { BiSitemap } from 'react-icons/bi'
 import { VscPersonAdd } from 'react-icons/vsc'
+import { BsBuilding } from 'react-icons/bs'
+import { FaRegHospital, FaHospitalSymbol } from 'react-icons/fa'
 
 function SitePreview({ document, options }) {
     if (!process.env.SANITY_STUDIO_PREVIEW_URL) {
@@ -42,20 +44,89 @@ const pageItem = ({ schemaType, id, title, icon, slug }) =>
             ]),
     )
 
-const regecny = () =>
+const HMI_INSTITUTE = () =>
+    S.listItem()
+        .title('HMI Institute')
+        .icon(BsBuilding)
+        .child(
+            S.list()
+                .title('HMI Institute')
+                .items([
+                    singleItem({
+                        schemaType: 'site',
+                        id: 'hmiInstitute.site',
+                        title: 'Site Config',
+                        icon: FaSitemap,
+                    }),
+
+                    S.divider(),
+                    S.listItem()
+                        .title('Pages')
+                        .icon(CgWebsite)
+                        .child(S.list().title('Pages').items([])),
+                ]),
+        )
+
+const SITE_3 = () =>
+    S.listItem()
+        .title('Site 3')
+        .icon(FaHospitalSymbol)
+        .child(
+            S.list()
+                .title('Site 3')
+                .items([
+                    singleItem({
+                        schemaType: 'site',
+                        id: 'site_3.site',
+                        title: 'Site Config',
+                        icon: FaSitemap,
+                    }),
+
+                    S.divider(),
+                    S.listItem()
+                        .title('Pages')
+                        .icon(CgWebsite)
+                        .child(S.list().title('Pages').items([])),
+                ]),
+        )
+
+const SITE_4 = () =>
+    S.listItem()
+        .title('Site 4')
+        .icon(FaHospitalSymbol)
+        .child(
+            S.list()
+                .title('Site 4')
+                .items([
+                    singleItem({
+                        schemaType: 'site',
+                        id: 'site_4.site',
+                        title: 'Site Config',
+                        icon: FaSitemap,
+                    }),
+
+                    S.divider(),
+                    S.listItem()
+                        .title('Pages')
+                        .icon(CgWebsite)
+                        .child(S.list().title('Pages').items([])),
+                ]),
+        )
+
+const REGENCY = () =>
     S.listItem()
         .title('Regency')
-        .icon(CgWebsite)
+        .icon(FaRegHospital)
         .child(
             S.list()
                 .title('Regency')
                 .items([
-                    S.documentListItem()
-                        .schemaType('site')
-                        .id('site')
-                        .title('Site Config')
-                        .icon(FaSitemap)
-                        .child(S.editor().schemaType('site')),
+                    singleItem({
+                        schemaType: 'site',
+                        id: 'regency.site',
+                        title: 'Site Config',
+                        icon: FaSitemap,
+                    }),
                     S.listItem()
                         .title('Notifications')
                         .icon(GrNotification)
@@ -64,14 +135,12 @@ const regecny = () =>
                                 .title('Notifications')
                                 .items([
                                     pageItem({
-                                        schemaType: 'notification',
-                                        id: 'notification',
+                                        schemaType: 'regency.notification',
+                                        id: 'regency.notification',
                                         icon: GrNotification,
                                     }),
                                 ]),
                         ),
-                    S.divider(),
-                    S.documentTypeListItem('doctor').icon(VscPersonAdd).title('Doctor'),
                     S.divider(),
                     S.listItem()
                         .title('Pages')
@@ -81,8 +150,8 @@ const regecny = () =>
                                 .title('Pages')
                                 .items([
                                     pageItem({
-                                        schemaType: 'landingPage',
-                                        id: 'landingPage',
+                                        schemaType: 'regency.landingPage',
+                                        id: 'regecy.landingPage',
                                         title: 'Landing',
                                         icon: FaHome,
                                         slug: '',
@@ -100,10 +169,13 @@ export default () =>
             S.listItem()
                 .title('Sites')
                 .icon(BiSitemap)
-                .child(S.list().title('Sites').items([regecny()])),
-
+                .child(
+                    S.list().title('Sites').items([REGENCY(), HMI_INSTITUTE(), SITE_3(), SITE_4()]),
+                ),
             S.divider(),
+            S.documentTypeListItem('doctor').icon(VscPersonAdd).title('Doctor'),
+
             ...S.documentTypeListItems().filter(
-                (item) => !['site', 'landingPage', 'doctor'].includes(item.getId()),
+                (item) => !['site', 'regency.landingPage', 'doctor'].includes(item.getId()),
             ),
         ])

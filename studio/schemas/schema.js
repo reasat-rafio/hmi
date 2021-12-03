@@ -1,13 +1,19 @@
 // First, we must import the schema creator
 import createSchema from 'part:@sanity/base/schema-creator'
 
+// Common schema
+import doctor from './common/documents/doctor'
+import siteConfig from './common/documents/site'
+
+// Common objects
+import seo from './common/objects/seo'
+import connectedWith from './common/objects/connected-with'
+import ctaButton from './common/objects/ctaButton'
+
 // Then import schema types from any plugins that might expose them
 import schemaTypes from 'all:part:@sanity/base/schema-type'
-import site from './sites/regency/site'
-import seo from './seo'
 
-//REGENCY
-import doctor from './sites/regency/document/doctor'
+//REGENCY SITE
 import landingPage from './sites/regency/pages/landingPage'
 import hero from './sites/regency/objects/hero'
 import transition from './sites/regency/objects/treatment/treatment'
@@ -15,11 +21,9 @@ import option from './sites/regency/objects/treatment/option'
 import additionalInfo from './sites/regency/objects/treatment/info'
 import accreditationsAndAwards from './sites/regency/objects/award/accreditation-award'
 import otherAccreditationsAwards from './sites/regency/objects/award/other-accreditations-awards'
-import admission from './sites/regency/objects/admission/admission'
+import admission from './sites/regency/objects/admission'
 import notification from './sites/regency/objects/notificationbar'
-
-import ctaButton from './sites/regency/objects/common/ctaButton'
-import point from './sites/regency/objects/common/point'
+import point from './sites/regency/objects/point'
 import menuItem from './sites/regency/objects/menuItem'
 
 // Then we give our schema to the builder and provide the result to Sanity
@@ -29,9 +33,12 @@ export default createSchema({
     // Then proceed to concatenate our document type
     // to the ones provided by any plugins that are installed
     types: schemaTypes.concat([
-        site,
+        siteConfig,
         seo,
+        connectedWith,
+
         doctor,
+
         landingPage,
         hero,
         transition,

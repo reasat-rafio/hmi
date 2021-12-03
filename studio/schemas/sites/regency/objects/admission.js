@@ -1,7 +1,7 @@
 import { FaClinicMedical } from 'react-icons/fa'
 
 export default {
-    name: 'admission',
+    name: 'regency.landingPage.admission',
     title: 'Admission',
     type: 'object',
     icon: FaClinicMedical,

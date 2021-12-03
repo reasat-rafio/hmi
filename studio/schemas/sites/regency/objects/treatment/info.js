@@ -3,7 +3,7 @@ import React from 'react'
 import { MdHighlight } from 'react-icons/md'
 
 export default {
-    name: 'additionalInfo',
+    name: 'regency.landingPage.treatment.additionalInfo',
     title: 'Additional Info',
     type: 'object',
     icon: AiOutlineInfoCircle,

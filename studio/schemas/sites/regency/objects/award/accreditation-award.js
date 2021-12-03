@@ -1,7 +1,7 @@
 import { RiAwardFill } from 'react-icons/ri'
 
 export default {
-    name: 'accreditationsAndAwards',
+    name: 'regency.landingPage.accreditationsAndAwards',
     title: 'Accreditations & awards',
     type: 'object',
     icon: RiAwardFill,
@@ -34,7 +34,7 @@ export default {
         {
             name: 'otherAccreditationsAwards',
             title: 'Other accreditations & awards',
-            type: 'otherAccreditationsAwards',
+            type: 'regency.landingPage.accreditationsAndAwards.otherAccreditationsAwards',
         },
     ],
     preview: {

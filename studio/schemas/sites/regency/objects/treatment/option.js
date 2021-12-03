@@ -1,7 +1,7 @@
 import { BsJournalMedical } from 'react-icons/bs'
 
 export default {
-    name: 'option',
+    name: 'regency.landingPage.treatment.option',
     title: 'Option',
     type: 'object',
     icon: BsJournalMedical,

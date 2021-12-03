@@ -1,5 +1,5 @@
 export default {
-    name: 'landingPage',
+    name: 'regency.landingPage',
     title: 'Landing Page',
     type: 'document',
     fields: [
@@ -14,10 +14,10 @@ export default {
             title: 'Screens',
             type: 'array',
             of: [
-                { type: 'hero' },
-                { type: 'treatment' },
-                { type: 'accreditationsAndAwards' },
-                { type: 'admission' },
+                { type: 'regency.landingPage.hero' },
+                { type: 'regency.landingPage.treatment' },
+                { type: 'regency.landingPage.accreditationsAndAwards' },
+                { type: 'regency.landingPage.admission' },
             ],
         },
     ],

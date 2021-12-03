@@ -1,7 +1,7 @@
 import { AiOutlineMedicineBox } from 'react-icons/ai'
 
 export default {
-    name: 'treatment',
+    name: 'regency.landingPage.treatment',
     title: 'Treatment',
     type: 'object',
     icon: AiOutlineMedicineBox,
@@ -33,13 +33,13 @@ export default {
             name: 'options',
             title: 'Options',
             type: 'array',
-            of: [{ type: 'option' }],
+            of: [{ type: 'regency.landingPage.treatment.option' }],
         },
 
         {
             name: 'additionalInfo',
             title: 'Additional Info',
-            type: 'additionalInfo',
+            type: 'regency.landingPage.treatment.additionalInfo',
         },
     ],
     preview: {

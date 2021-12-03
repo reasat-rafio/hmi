@@ -1,7 +1,7 @@
 import { AiOutlineHome } from 'react-icons/ai'
 
 export default {
-    name: 'hero',
+    name: 'regency.landingPage.hero',
     title: 'Hero',
     type: 'object',
     icon: AiOutlineHome,

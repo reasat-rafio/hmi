@@ -71,6 +71,7 @@ export default {
             title: 'Consultation Hour',
             type: 'date',
         },
+        { name: 'connectedWith', type: 'connectedWith' },
     ],
     preview: {
         select: {
