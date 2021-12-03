@@ -3,6 +3,8 @@ import { GrEdit, GrView, GrNotification, GrContact, GrCatalog } from 'react-icon
 import * as React from 'react'
 import { FaSitemap, FaHome, FaWindowRestore } from 'react-icons/fa'
 import { CgWebsite } from 'react-icons/cg'
+import { BiSitemap } from 'react-icons/bi'
+import { VscPersonAdd } from 'react-icons/vsc'
 
 function SitePreview({ document, options }) {
     if (!process.env.SANITY_STUDIO_PREVIEW_URL) {
@@ -40,53 +42,68 @@ const pageItem = ({ schemaType, id, title, icon, slug }) =>
             ]),
     )
 
+const regecny = () =>
+    S.listItem()
+        .title('Regency')
+        .icon(CgWebsite)
+        .child(
+            S.list()
+                .title('Regency')
+                .items([
+                    S.documentListItem()
+                        .schemaType('site')
+                        .id('site')
+                        .title('Site Config')
+                        .icon(FaSitemap)
+                        .child(S.editor().schemaType('site')),
+                    S.listItem()
+                        .title('Notifications')
+                        .icon(GrNotification)
+                        .child(
+                            S.list()
+                                .title('Notifications')
+                                .items([
+                                    pageItem({
+                                        schemaType: 'notification',
+                                        id: 'notification',
+                                        icon: GrNotification,
+                                    }),
+                                ]),
+                        ),
+                    S.divider(),
+                    S.documentTypeListItem('doctor').icon(VscPersonAdd).title('Doctor'),
+                    S.divider(),
+                    S.listItem()
+                        .title('Pages')
+                        .icon(CgWebsite)
+                        .child(
+                            S.list()
+                                .title('Pages')
+                                .items([
+                                    pageItem({
+                                        schemaType: 'landingPage',
+                                        id: 'landingPage',
+                                        title: 'Landing',
+                                        icon: FaHome,
+                                        slug: '',
+                                    }),
+                                ]),
+                        ),
+                ]),
+        )
+
 export default () =>
     S.list()
         .title('Content')
         .id('__root__')
         .items([
-            S.documentListItem()
-                .schemaType('site')
-                .id('site')
-                .title('Site')
-                .icon(FaSitemap)
-                .child(S.editor().schemaType('site')),
-
             S.listItem()
-                .title('Notifications')
-                .icon(GrNotification)
-                .child(
-                    S.list()
-                        .title('Notifications')
-                        .items([
-                            pageItem({
-                                schemaType: 'notification',
-                                id: 'notification',
-                                icon: GrNotification,
-                            }),
-                        ]),
-                ),
-
-            S.divider(),
-            S.listItem()
-                .title('Pages')
-                .icon(CgWebsite)
-                .child(
-                    S.list()
-                        .title('Pages')
-                        .items([
-                            pageItem({
-                                schemaType: 'landingPage',
-                                id: 'landingPage',
-                                title: 'Landing',
-                                icon: FaHome,
-                                slug: '',
-                            }),
-                        ]),
-                ),
+                .title('Sites')
+                .icon(BiSitemap)
+                .child(S.list().title('Sites').items([regecny()])),
 
             S.divider(),
             ...S.documentTypeListItems().filter(
-                (item) => !['site', 'landingPage'].includes(item.getId()),
+                (item) => !['site', 'landingPage', 'doctor'].includes(item.getId()),
             ),
         ])

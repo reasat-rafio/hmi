@@ -3,22 +3,24 @@ import createSchema from 'part:@sanity/base/schema-creator'
 
 // Then import schema types from any plugins that might expose them
 import schemaTypes from 'all:part:@sanity/base/schema-type'
-import site from './site'
+import site from './sites/regency/site'
 import seo from './seo'
 
-import landingPage from './pages/landingPage'
-import hero from './objects/hero'
-import transition from './objects/treatment/treatment'
-import option from './objects/treatment/option'
-import additionalInfo from './objects/treatment/info'
-import accreditationsAndAwards from './objects/award/accreditation-award'
-import otherAccreditationsAwards from './objects/award/other-accreditations-awards'
-import admission from './objects/admission/admission'
-import notification from './objects/notificationbar'
+//REGENCY
+import doctor from './sites/regency/document/doctor'
+import landingPage from './sites/regency/pages/landingPage'
+import hero from './sites/regency/objects/hero'
+import transition from './sites/regency/objects/treatment/treatment'
+import option from './sites/regency/objects/treatment/option'
+import additionalInfo from './sites/regency/objects/treatment/info'
+import accreditationsAndAwards from './sites/regency/objects/award/accreditation-award'
+import otherAccreditationsAwards from './sites/regency/objects/award/other-accreditations-awards'
+import admission from './sites/regency/objects/admission/admission'
+import notification from './sites/regency/objects/notificationbar'
 
-import ctaButton from './objects/common/ctaButton'
-import point from './objects/common/point'
-import menuItem from './objects/menuItem'
+import ctaButton from './sites/regency/objects/common/ctaButton'
+import point from './sites/regency/objects/common/point'
+import menuItem from './sites/regency/objects/menuItem'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -29,6 +31,7 @@ export default createSchema({
     types: schemaTypes.concat([
         site,
         seo,
+        doctor,
         landingPage,
         hero,
         transition,
@@ -38,7 +41,6 @@ export default createSchema({
         otherAccreditationsAwards,
         admission,
         notification,
-
         ctaButton,
         point,
         menuItem,
