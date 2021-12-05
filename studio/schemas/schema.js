@@ -10,7 +10,7 @@ import seo from './common/objects/seo'
 import connectedWith from './common/objects/connected-with'
 import ctaButton from './common/objects/ctaButton'
 
-// Then import schema types from any plugins that might expose them
+// Then Import schema types from any plugins that might expose them
 import schemaTypes from 'all:part:@sanity/base/schema-type'
 
 //REGENCY SITE
